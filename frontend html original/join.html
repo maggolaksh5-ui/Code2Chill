@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Code2Chill</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container nav-content">
+        <a href="index.html" class="logo">&lt;/&gt; Code<span>2Chill</span></a>
+        <a href="index.html" class="nav-btn">Home</a>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+        <span class="eyebrow">BECOME A MEMBER</span>
+        <h2>Join <span>Code2Chill</span></h2>
+        <p class="section-text">Think. Code. Collaborate. Be part of our community.</p>
+
+        <form class="join-form" id="joinForm">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your college email" required>
+
+            <label>Branch</label>
+            <input type="text" name="branch" placeholder="e.g. CSE, AIML, IT" required>
+
+            <label>Year of Study</label>
+            <select name="year" required>
+                <option value="">Select your year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+            </select>
+
+            <label>Why do you want to join?</label>
+            <textarea name="reason" placeholder="Tell us about your interests..." required></textarea>
+
+            <button type="submit" class="btn primary" id="joinButton">
+                Submit Application ↗
+            </button>
+        </form>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

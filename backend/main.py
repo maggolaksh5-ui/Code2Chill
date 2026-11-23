@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from database import Base, engine, get_db
 import models
-from schemas import JoinApplicationCreate
+from schemas import JoinApplicationCreate, ContactMessageCreate
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(
     title="Code2Chill API",
@@ -11,7 +11,11 @@ app = FastAPI(
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+   allow_origins=[
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "http://localhost:5173"
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -54,4 +58,24 @@ def submit_application(
     return {
         "message": "Application submitted successfully!",
         "application_id": new_application.id
+    }
+
+@app.post("/contact")
+def submit_contact_message(
+    contact: ContactMessageCreate,
+    db: Session = Depends(get_db)
+):
+    new_message = models.ContactMessage(
+        name=contact.name,
+        email=contact.email,
+        message=contact.message
+    )
+
+    db.add(new_message)
+    db.commit()
+    db.refresh(new_message)
+
+    return {
+        "message": "Contact message submitted successfully!",
+        "message_id": new_message.id
     }

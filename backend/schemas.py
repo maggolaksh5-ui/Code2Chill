@@ -1,4 +1,5 @@
 
+
 from pydantic import BaseModel
 
 
@@ -8,3 +9,10 @@ class JoinApplicationCreate(BaseModel):
     branch: str
     year: str
     reason: str
+
+
+class ContactMessageCreate(BaseModel):
+    name: str
+    email: str
+    message: str
+
