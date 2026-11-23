@@ -1381,3 +1381,79 @@ button {
     grid-template-columns: 1fr;
   }
 }
+
+/* JOIN US FORM */
+
+.join-form {
+  width: 100%;
+  max-width: 650px;
+  margin: 45px auto 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(155, 120, 255, 0.25);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.join-form label {
+  color: #f1efff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.join-form input,
+.join-form select,
+.join-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.join-form input:focus,
+.join-form select:focus,
+.join-form textarea:focus {
+  border-color: #9275ff;
+  box-shadow: 0 0 0 3px rgba(146, 117, 255, 0.12);
+}
+
+.join-form input::placeholder,
+.join-form textarea::placeholder {
+  color: #aaa7bb;
+}
+
+.join-form select option {
+  background: #171525;
+  color: white;
+}
+
+.join-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.join-form button {
+  margin-top: 18px;
+  align-self: flex-start;
+}
+
+@media (max-width: 600px) {
+  .join-form {
+    padding: 24px 18px;
+  }
+
+  .join-form button {
+    width: 100%;
+  }
+}
