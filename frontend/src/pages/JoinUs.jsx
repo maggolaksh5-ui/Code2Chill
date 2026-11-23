@@ -10,6 +10,8 @@ function JoinUs() {
     reason: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -17,18 +19,39 @@ function JoinUs() {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
-    alert("Your application has been submitted!");
+    try {
+      const response = await fetch("http://127.0.0.1:8000/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      branch: "",
-      year: "",
-      reason: "",
-    });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.detail || "Application submission failed");
+      }
+
+      alert("Application submitted successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        branch: "",
+        year: "",
+        reason: "",
+      });
+    } catch (error) {
+      alert("Something went wrong: " + error.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -94,8 +117,12 @@ function JoinUs() {
             required
           />
 
-          <button type="submit" className="btn btn-primary">
-            Submit Application ↗
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Submit Application ↗"}
           </button>
         </form>
       </div>
