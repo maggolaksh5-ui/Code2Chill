@@ -39,7 +39,7 @@ if (joinForm) {
         button.textContent = "Submitting...";
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/join", {
+            const response = await fetch("https://code2chill-api.onrender.com/join", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
